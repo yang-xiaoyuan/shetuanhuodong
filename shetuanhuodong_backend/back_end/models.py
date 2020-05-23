@@ -6,13 +6,14 @@ class users(models.Model):
     password = models.CharField(max_length=12, null=False)
     create_time = models.DateTimeField()
     sex = models.CharField(max_length=1, null=True)
-    image = models.BinaryField(null=True)
+    image = models.ImageField(null=True)
     phone_number = models.CharField(max_length=15)
     teams = models.TextField(null=True)
     activities = models.TextField(null=True)
     time_schedule = models.CharField(max_length=84, null=True)
     self_introduction = models.TextField(null=True)
     friends = models.TextField(null=True)
+    to_add_friends = models.CharField(max_length=200, default="")
 
 
 class teams(models.Model):
@@ -34,3 +35,9 @@ class activities(models.Model):
     launcher = models.CharField(max_length=10)
     team = models.CharField(max_length=15, null=True)
     status = models.BooleanField(default=True)
+    participants = models.TextField()
+
+class nickname(models.Model):
+    team = models.CharField(max_length=15)
+    user_name = models.CharField(max_length=10)
+    nick_name = models.CharField(max_length=10)
